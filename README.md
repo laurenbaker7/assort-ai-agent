@@ -50,3 +50,45 @@ uvicorn main:app --reload
 - Call the Twilio number provided
 - The agent will guide you through the intake process and confirm an appointment
 - A confirmation email will be sent to the Assort team after the call
+
+
+## File structure
+- **main.py:**
+    - Sets up FastAPI for Twilio webhook endpoint
+    - Handles incoming call logic and connects to 'agent_logic.py'
+- **agent_logic.py:**
+    - Manages the step-by-step collection of:
+        - Name, DOB, insurance, referral, complaint, address, contact
+    - Calls TTS/STT functions
+    - Calls 'address_validator.py' when needed
+    - Calls 'appointments_manager.py' to offer/book slots
+- **appointments_manager.py:**
+    - Loads 'appointments.json' on startup
+    - Provides:
+        - 'get_available_slots()'
+        - 'book_slot(slot_id, patient_info)'
+        - 'save_appointments()'
+- **email_sender.py:**
+    - Sends a formatted confirmation email with:
+        - Patient info
+        - Appointment details
+        - Fake doctor and time
+- **address_validator.py:**
+    - Calls an address validation API
+    - Returns valid/invalid and prompts reprompt logic if invalid
+- **appointments.json:**
+    - Preloaded with fake appointment slots
+    - Updated on booking to prevent double booking
+- **requirements.txt:**
+    - Contains packages:
+        - 'fastapi', 'uvicorn'
+        - 'twilio'
+        - 'requests'
+        - 'python-dotenv'
+        - 'pydantic' (optional for data validation)
+- **.env:**
+    - Holds sensitive keys:
+        - Twilio SID/auth
+        - Email credentials
+        - API keys
+        - Phone number for quick testing
