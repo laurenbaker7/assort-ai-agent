@@ -5,10 +5,7 @@ from pprint import pprint
 APPOINTMENTS_FILE = "appointments.json"
 
 def load_appointments() -> List[Dict]:
-    """
-    Loads all appointments from the appointments.json file.
-    Returns a list of appointment dictionaries.
-    """
+    # Loads all appts from the appointments.json file & returns a list of all appt dictionaries
     try:
         with open(APPOINTMENTS_FILE, "r") as file:
             return json.load(file)
@@ -16,16 +13,12 @@ def load_appointments() -> List[Dict]:
         return []
 
 def save_appointments(appointments: List[Dict]) -> None:
-    """
-    Saves the provided list of appointments back to appointments.json.
-    """
+    # Saves the provided list of appointments back to appointments.json.
     with open(APPOINTMENTS_FILE, "w") as file:
         json.dump(appointments, file, indent=2)
 
 def get_available_slots() -> List[Dict]:
-    """
-    Returns a list of unbooked appointment slots.
-    """
+    # Returns a list of unbooked appointment slots.
     appointments = load_appointments()
     return [appt for appt in appointments if not appt.get("booked", False)]
 
