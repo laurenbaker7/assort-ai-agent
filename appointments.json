@@ -1,0 +1,70 @@
+[
+  {
+    "id": 1,
+    "doctor": "Dr. Smith",
+    "time": "2025-07-10 10:00 AM",
+    "location": "San Francisco, CA",
+    "booked": true,
+    "patient_info": {
+      "name": "Test Patient",
+      "dob": "01/01/1990",
+      "phone": "555-555-5555"
+    }
+  },
+  {
+    "id": 2,
+    "doctor": "Dr. Lee",
+    "time": "2025-07-10 11:00 AM",
+    "location": "Santa Barbara, CA",
+    "booked": false,
+    "patient_info": {}
+  },
+  {
+    "id": 3,
+    "doctor": "Dr. Patel",
+    "time": "2025-07-10 1:00 PM",
+    "location": "San Francisco, CA",
+    "booked": false,
+    "patient_info": {}
+  },
+  {
+    "id": 4,
+    "doctor": "Dr. Chen",
+    "time": "2025-07-10 2:30 PM",
+    "location": "San Francisco, CA",
+    "booked": false,
+    "patient_info": {}
+  },
+  {
+    "id": 5,
+    "doctor": "Dr. Smith",
+    "time": "2025-07-11 10:00 AM",
+    "location": "San Francisco, CA",
+    "booked": false,
+    "patient_info": {}
+  },
+  {
+    "id": 6,
+    "doctor": "Dr. Lee",
+    "time": "2025-07-11 11:00 AM",
+    "location": "Santa Barbara, CA",
+    "booked": false,
+    "patient_info": {}
+  },
+  {
+    "id": 7,
+    "doctor": "Dr. Patel",
+    "time": "2025-07-11 1:00 PM",
+    "location": "San Francisco, CA",
+    "booked": false,
+    "patient_info": {}
+  },
+  {
+    "id": 8,
+    "doctor": "Dr. Chen",
+    "time": "2025-07-11 2:30 PM",
+    "location": "San Francisco, CA",
+    "booked": false,
+    "patient_info": {}
+  }
+]
