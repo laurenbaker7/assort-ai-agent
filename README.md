@@ -27,13 +27,13 @@ A simple AI voice agent that collects patient intake details over the phone, off
 
 1. **Clone the repo:**
 ```bash
-git clone https://github.com/your-username/assort-voice-agent.git
-cd assort-voice-agent
+git clone https://github.com/your-username/assort-ai-agent.git
+cd assort-ai-agent
 ```
 
 2. **Install dependencies:**
 ```bash
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
 3. **Add enviornment variables** in a `.env` file for your API keys and email/Twilio credentials.
@@ -45,15 +45,17 @@ uvicorn main:app --reload
 
 5. Use ngrok to expose your local server for Twilio during testing.
 
+---
 
 ## Testing
 - Call the Twilio number provided
 - The agent will guide you through the intake process and confirm an appointment
 - A confirmation email will be sent to the Assort team after the call
 
+---
 
 ## File structure
-- **main.py:**
+- **`main.py`:**
     - Sets up FastAPI for Twilio webhook endpoint
     - Handles incoming call logic and connects to `agent_logic.py`
 - **agent_logic.py:**
