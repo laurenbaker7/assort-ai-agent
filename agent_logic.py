@@ -46,13 +46,12 @@ def collect_patient_info() -> Dict:
 
 def offer_and_book_appointment(patient_info: Dict) -> Optional[Dict]:
     # Offers available appointments, books selected appointment, sends confirmation email
-    # TODO:
-    # Retrieve available appointments using appointments_manager.get_available_slots()
+    
     available_appts = appointments_manager.get_available_slots()
     if not available_appts:
         print("No available appointments at this time. Please try again later.")
         return None
-    # Display available slots clearly to the caller.
+    
     print(f"\nThere are {len(available_appts)} appointments available. Here is the information about each of those appointments:")
     for appt in available_appts:
         print(f"ID: {appt['id']}")
@@ -60,7 +59,7 @@ def offer_and_book_appointment(patient_info: Dict) -> Optional[Dict]:
         print(f"Time: {appt['time']}")
         print(f"Location: {appt['location']}")
         print("-" * 30)
-    # Prompt the caller to select an appointment by ID.
+
     while True:
         try:
             selected_id = int(input("Please enter the ID of the appointment you would like to book: "))

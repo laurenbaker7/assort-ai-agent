@@ -16,24 +16,54 @@
     "doctor": "Dr. Lee",
     "time": "2025-07-10 11:00 AM",
     "location": "Santa Barbara, CA",
-    "booked": false,
-    "patient_info": {}
+    "booked": true,
+    "patient_info": {
+      "name": "Jane Doe",
+      "dob": "01/01/1990",
+      "phone": "555-555-5555",
+      "email": "jane@example.com",
+      "address": "1258 Chestnut Street, San Francisco, CA 94109, United States of America",
+      "reason_for_visit": "Routine checkup",
+      "insurance_payer": "Blue Shield",
+      "insurance_id": "ABC12345",
+      "referral": "Dr. Lee"
+    }
   },
   {
     "id": 3,
-    "doctor": "Dr. Patel",
+    "doctor": "Dr. Jones",
     "time": "2025-07-10 1:00 PM",
     "location": "San Francisco, CA",
-    "booked": false,
-    "patient_info": {}
+    "booked": true,
+    "patient_info": {
+      "name": "Jane Doe",
+      "dob": "01/01/1990",
+      "phone": "555-555-5555",
+      "email": "jane@example.com",
+      "address": "San Francisco, CA, United States of America",
+      "reason_for_visit": "Routine checkup",
+      "insurance_payer": "Blue Shield",
+      "insurance_id": "ABC12345",
+      "referral": "Dr. Lee"
+    }
   },
   {
     "id": 4,
     "doctor": "Dr. Chen",
     "time": "2025-07-10 2:30 PM",
     "location": "San Francisco, CA",
-    "booked": false,
-    "patient_info": {}
+    "booked": true,
+    "patient_info": {
+      "name": "Jane Doe",
+      "dob": "01/01/1990",
+      "phone": "555-555-5555",
+      "email": "jane@example.com",
+      "address": "123 North Main Street, Medicine Lodge, KS 67104, United States of America",
+      "reason_for_visit": "Routine checkup",
+      "insurance_payer": "Blue Shield",
+      "insurance_id": "ABC12345",
+      "referral": "Dr. Lee"
+    }
   },
   {
     "id": 5,
@@ -73,7 +103,7 @@
   },
   {
     "id": 7,
-    "doctor": "Dr. Patel",
+    "doctor": "Dr. Jones",
     "time": "2025-07-11 1:00 PM",
     "location": "San Francisco, CA",
     "booked": true,
@@ -94,7 +124,217 @@
     "doctor": "Dr. Chen",
     "time": "2025-07-11 2:30 PM",
     "location": "San Francisco, CA",
+    "booked": true,
+    "patient_info": {
+      "name": "Jane Doe",
+      "dob": "01/01/1990",
+      "phone": "555-555-5555",
+      "email": "jane@example.com",
+      "address": "Biosciences 1 (123), 87 Tin Alley, Parkville VIC 3052, Australia",
+      "reason_for_visit": "Routine checkup",
+      "insurance_payer": "Blue Shield",
+      "insurance_id": "ABC12345",
+      "referral": "Dr. Lee"
+    }
+  },
+  {
+    "id": 9,
+    "doctor": "Dr. Smith",
+    "time": "2025-07-15 9:00 AM",
+    "location": "San Francisco, CA",
+    "booked": false,
+    "patient_info": {}
+  },
+  {
+    "id": 10,
+    "doctor": "Dr. Chen",
+    "time": "2025-07-15 10:30 AM",
+    "location": "San Francisco, CA",
+    "booked": false,
+    "patient_info": {}
+  },
+  {
+    "id": 11,
+    "doctor": "Dr. Lee",
+    "time": "2025-07-15 1:00 PM",
+    "location": "San Francisco, CA",
+    "booked": false,
+    "patient_info": {}
+  },
+  {
+    "id": 12,
+    "doctor": "Dr. Jones",
+    "time": "2025-07-16 9:30 AM",
+    "location": "San Francisco, CA",
+    "booked": false,
+    "patient_info": {}
+  },
+  {
+    "id": 13,
+    "doctor": "Dr. Smith",
+    "time": "2025-07-16 11:00 AM",
+    "location": "San Francisco, CA",
+    "booked": false,
+    "patient_info": {}
+  },
+  {
+    "id": 14,
+    "doctor": "Dr. Chen",
+    "time": "2025-07-16 2:00 PM",
+    "location": "San Francisco, CA",
+    "booked": false,
+    "patient_info": {}
+  },
+  {
+    "id": 15,
+    "doctor": "Dr. Lee",
+    "time": "2025-07-17 9:00 AM",
+    "location": "San Jose, CA",
+    "booked": false,
+    "patient_info": {}
+  },
+  {
+    "id": 16,
+    "doctor": "Dr. Jones",
+    "time": "2025-07-17 10:30 AM",
+    "location": "San Jose, CA",
+    "booked": false,
+    "patient_info": {}
+  },
+  {
+    "id": 17,
+    "doctor": "Dr. Smith",
+    "time": "2025-07-17 1:00 PM",
+    "location": "San Francisco, CA",
+    "booked": false,
+    "patient_info": {}
+  },
+  {
+    "id": 18,
+    "doctor": "Dr. Chen",
+    "time": "2025-07-18 9:30 AM",
+    "location": "Berkeley, CA",
+    "booked": false,
+    "patient_info": {}
+  },
+  {
+    "id": 19,
+    "doctor": "Dr. Lee",
+    "time": "2025-07-18 11:00 AM",
+    "location": "San Francisco, CA",
+    "booked": false,
+    "patient_info": {}
+  },
+  {
+    "id": 20,
+    "doctor": "Dr. Jones",
+    "time": "2025-07-18 2:00 PM",
+    "location": "San Francisco, CA",
+    "booked": false,
+    "patient_info": {}
+  },
+  {
+    "id": 21,
+    "doctor": "Dr. Smith",
+    "time": "2025-07-21 9:00 AM",
+    "location": "San Francisco, CA",
+    "booked": false,
+    "patient_info": {}
+  },
+  {
+    "id": 22,
+    "doctor": "Dr. Chen",
+    "time": "2025-07-21 10:30 AM",
+    "location": "San Francisco, CA",
+    "booked": false,
+    "patient_info": {}
+  },
+  {
+    "id": 23,
+    "doctor": "Dr. Lee",
+    "time": "2025-07-21 1:00 PM",
+    "location": "San Jose, CA",
+    "booked": false,
+    "patient_info": {}
+  },
+  {
+    "id": 24,
+    "doctor": "Dr. Jones",
+    "time": "2025-07-22 9:30 AM",
+    "location": "San Francisco, CA",
+    "booked": false,
+    "patient_info": {}
+  },
+  {
+    "id": 25,
+    "doctor": "Dr. Smith",
+    "time": "2025-07-22 11:00 AM",
+    "location": "Berkeley, CA",
+    "booked": false,
+    "patient_info": {}
+  },
+  {
+    "id": 26,
+    "doctor": "Dr. Chen",
+    "time": "2025-07-22 2:00 PM",
+    "location": "San Francisco, CA",
+    "booked": false,
+    "patient_info": {}
+  },
+  {
+    "id": 27,
+    "doctor": "Dr. Lee",
+    "time": "2025-07-23 9:00 AM",
+    "location": "San Francisco, CA",
+    "booked": false,
+    "patient_info": {}
+  },
+  {
+    "id": 28,
+    "doctor": "Dr. Jones",
+    "time": "2025-07-23 10:30 AM",
+    "location": "San Jose, CA",
+    "booked": false,
+    "patient_info": {}
+  },
+  {
+    "id": 29,
+    "doctor": "Dr. Smith",
+    "time": "2025-07-23 1:00 PM",
+    "location": "San Francisco, CA",
+    "booked": false,
+    "patient_info": {}
+  },
+  {
+    "id": 30,
+    "doctor": "Dr. Chen",
+    "time": "2025-07-24 9:30 AM",
+    "location": "San Francisco, CA",
+    "booked": false,
+    "patient_info": {}
+  },
+  {
+    "id": 31,
+    "doctor": "Dr. Lee",
+    "time": "2025-07-24 11:00 AM",
+    "location": "Berkeley, CA",
+    "booked": false,
+    "patient_info": {}
+  },
+  {
+    "id": 32,
+    "doctor": "Dr. Jones",
+    "time": "2025-07-24 2:00 PM",
+    "location": "San Francisco, CA",
+    "booked": false,
+    "patient_info": {}
+  },
+  {
+    "id": 33,
+    "doctor": "Dr. Smith",
+    "time": "2025-07-25 9:00 AM",
+    "location": "San Francisco, CA",
     "booked": false,
     "patient_info": {}
   }
-]
+]  
