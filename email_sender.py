@@ -22,28 +22,35 @@ def send_confirmation_email(patient_info: Dict, appointment_info: Dict) -> None:
     sender_email = EMAIL_HOST_USER
     recipients = ASSORT_EMAILS
     
-    body = f"""
-    A new appointment has been booked.
+    # HTML body with bolded headings and clear formatting
+    html_body = f"""
+    <html>
+    <body>
+    <p><strong>A new appointment has been booked.</strong></p>
 
-    Patient Information:
-    Name: {patient_info.get('name')}
-    Date of Birth: {patient_info.get('dob')}
-    Phone: {patient_info.get('phone')}
-    Email: {patient_info.get('email', 'N/A')}
-    Address: {patient_info.get('address', 'N/A')}
-    Reason for Visit: {patient_info.get('reason_for_visit', 'N/A')}
+    <p><strong>Patient Information:</strong><br>
+    Name: {patient_info.get('name')}<br>
+    Date of Birth: {patient_info.get('dob')}<br>
+    Phone: {patient_info.get('phone')}<br>
+    Email: {patient_info.get('email') or 'N/A'}<br>
+    Address: {patient_info.get('address') or 'N/A'}<br>
+    Reason for Visit: {patient_info.get('reason_for_visit') or 'N/A'}
+    </p>
 
-    Appointment Details:
-    Doctor: {appointment_info.get('doctor')}
-    Date & Time: {appointment_info.get('time')}
+    <p><strong>Appointment Details:</strong><br>
+    Doctor: {appointment_info.get('doctor')}<br>
+    Date & Time: {appointment_info.get('time')}<br>
     Location: {appointment_info.get('location')}
+    </p>
+    </body>
+    </html>
     """
 
     msg = MIMEMultipart()
     msg["From"] = sender_email
     msg["To"] = ", ".join(recipients)
     msg["Subject"] = subject
-    msg.attach(MIMEText(body, "plain"))
+    msg.attach(MIMEText(html_body, "html"))
     
     try:
         with smtplib.SMTP(EMAIL_HOST, EMAIL_PORT) as server:
