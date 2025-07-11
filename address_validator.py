@@ -51,9 +51,3 @@ def validate_address(address: str) -> dict:
             "formatted_address": "",
             "message": f"Error validating address: {e}"
         }
-
-"""if __name__ == "__main__":
-    # CLI test
-    test_address = input("Enter an address to validate: ")
-    result = validate_address(test_address)
-    print(result)"""

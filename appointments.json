@@ -340,8 +340,17 @@
     "doctor": "Dr. Lee",
     "time": "2025-07-24 11:00 AM",
     "location": "Berkeley, CA",
-    "booked": false,
-    "patient_info": {}
+    "booked": true,
+    "patient_info": {
+      "name": "Emily, Baker",
+      "dob": "1999-05-09",
+      "email": "Emily99Baker@gmail.com",
+      "address": "260 College Avenue, Berkeley, CA 94705, United States of America",
+      "reason_for_visit": "Annual appointment",
+      "insurance_payer": "UnitedHealthcare",
+      "insurance_id": "179-829-44",
+      "referral": "Doctor Chen"
+    }
   },
   {
     "id": 32,

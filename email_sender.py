@@ -60,22 +60,3 @@ def send_confirmation_email(patient_info: Dict, appointment_info: Dict) -> None:
         print("Confirmation email sent successfully.")
     except Exception as e:
         print("Failed to send confirmation email:", e)
-
-"""if __name__ == "__main__":
-    # Test data for sending a test email
-    test_patient_info = {
-        "name": "John Doe",
-        "dob": "01/01/1990",
-        "phone": "555-555-5555",
-        "email": "johndoe@example.com",
-        "address": "123 Main St, San Francisco, CA",
-        "reason_for_visit": "Broken ankle"
-    }
-
-    test_appointment_info = {
-        "doctor": "Dr. Smith",
-        "time": "2025-07-10 10:00 AM",
-        "location": "San Francisco, CA"
-    }
-
-    send_confirmation_email(test_patient_info, test_appointment_info)"""

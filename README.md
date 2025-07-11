@@ -40,7 +40,7 @@ pip3 install -r requirements.txt
 
 4. **Run locally:**
 ```bash
-uvicorn main:app --reload
+uvicorn agent:app --reload
 ```
 
 5. Use ngrok to expose your local server for Twilio during testing.
@@ -55,10 +55,7 @@ uvicorn main:app --reload
 ---
 
 ## File structure
-- **`main.py`:**
-    - Sets up FastAPI for Twilio webhook endpoint
-    - Handles incoming call logic and connects to `agent_logic.py`
-- **`agent_logic.py`:**
+- **`agent.py`:**
     - Manages the step-by-step collection of:
         - Name, DOB, insurance, referral, complaint, address, contact
     - Calls TTS/STT functions
@@ -70,6 +67,7 @@ uvicorn main:app --reload
         - `get_available_slots()`
         - `book_slot(slot_id, patient_info)`
         - `save_appointments()`
+        - `get_best_appointments(city, referral)`
 - **`email_sender.py`:**
     - Sends a formatted confirmation email with:
         - Patient info

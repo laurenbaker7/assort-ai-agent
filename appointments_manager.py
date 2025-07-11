@@ -1,6 +1,5 @@
 import json
 from typing import List, Dict, Optional
-from pprint import pprint
 
 APPOINTMENTS_FILE = "appointments.json"
 
@@ -40,6 +39,9 @@ def book_slot(slot_id: int, patient_info: Dict) -> Optional[Dict]:
             return appt
     return None
 
+def get_last_word(s: str) -> str:
+    return s.strip().split()[-1].lower() if s else ""
+
 def get_best_appointments(city: str, referral: str) -> List[Dict]:
     """
     Returns up to 5 best appointment slots based on:
@@ -48,7 +50,7 @@ def get_best_appointments(city: str, referral: str) -> List[Dict]:
     """
     appointments = get_available_slots()
     requested_city = city.lower() if city else ""
-    referral_doctor = referral.lower() if referral else ""
+    referral_doctor = get_last_word(referral)
 
     scored_slots = []
 
@@ -58,8 +60,9 @@ def get_best_appointments(city: str, referral: str) -> List[Dict]:
 
         score = 0
         slot_city = slot["location"].split(",")[0].strip().lower()
+        doctor_last_name = get_last_word(slot["doctor"])
 
-        has_referral = referral_doctor and referral_doctor in slot["doctor"].lower()
+        has_referral = referral_doctor and (referral_doctor in doctor_last_name)
         if has_referral:
             score += 100  # Prioritize referral
 
@@ -71,21 +74,3 @@ def get_best_appointments(city: str, referral: str) -> List[Dict]:
     best_slots = [slot for score, slot in sorted(scored_slots, key=lambda x: x[0], reverse=True) if score > 0][:5]
 
     return best_slots
-
-"""if __name__ == "__main__":
-    available = get_available_slots()
-    print("Available slots before booking, (" + str(len(available)) + " slots):")
-    pprint(available)
-
-    # Test booking slot ID 1 with sample patient info
-    booked = book_slot(1, {
-        "name": "Test Patient",
-        "dob": "01/01/1990",
-        "phone": "555-555-5555"
-    })
-    print("\nBooked slot:")
-    pprint(booked)
-
-    available_after = get_available_slots()
-    print("\nAvailable slots after booking, (" + str(len(available_after)) + " slots):")
-    pprint(available_after)"""
