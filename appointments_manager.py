@@ -40,6 +40,38 @@ def book_slot(slot_id: int, patient_info: Dict) -> Optional[Dict]:
             return appt
     return None
 
+def get_best_appointments(city: str, referral: str) -> List[Dict]:
+    """
+    Returns up to 5 best appointment slots based on:
+    - Referral doctor priority
+    - Matching city
+    """
+    appointments = get_available_slots()
+    requested_city = city.lower() if city else ""
+    referral_doctor = referral.lower() if referral else ""
+
+    scored_slots = []
+
+    for slot in appointments:
+        if slot.get("booked"):
+            continue
+
+        score = 0
+        slot_city = slot["location"].split(",")[0].strip().lower()
+
+        has_referral = referral_doctor and referral_doctor in slot["doctor"].lower()
+        if has_referral:
+            score += 100  # Prioritize referral
+
+        if requested_city and requested_city == slot_city:
+            score += 1
+
+        scored_slots.append((score, slot))
+
+    best_slots = [slot for score, slot in sorted(scored_slots, key=lambda x: x[0], reverse=True) if score > 0][:5]
+
+    return best_slots
+
 """if __name__ == "__main__":
     available = get_available_slots()
     print("Available slots before booking, (" + str(len(available)) + " slots):")

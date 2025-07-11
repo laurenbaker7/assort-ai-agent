@@ -1,7 +1,7 @@
 from dotenv import load_dotenv
 
 from livekit import agents
-from livekit.agents import AgentSession, Agent, RoomInputOptions
+from livekit.agents import AgentSession, Agent, RoomInputOptions, RoomOutputOptions
 from livekit.plugins import (
     openai,
     cartesia,
@@ -40,6 +40,7 @@ async def entrypoint(ctx: agents.JobContext):
         room_input_options=RoomInputOptions(
             noise_cancellation=noise_cancellation.BVC(),
         ),
+        room_output_options=RoomOutputOptions(transcription_enabled=True),
     )
 
     await ctx.connect()

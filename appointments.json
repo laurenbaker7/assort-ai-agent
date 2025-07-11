@@ -142,8 +142,17 @@
     "doctor": "Dr. Smith",
     "time": "2025-07-15 9:00 AM",
     "location": "San Francisco, CA",
-    "booked": false,
-    "patient_info": {}
+    "booked": true,
+    "patient_info": {
+      "name": "Chain Smith",
+      "dob": "1999-08-17",
+      "email": "laurenbaker@gmail.com",
+      "address": "138 Chestnut Street, San Francisco, CA 94111, United States of America",
+      "reason_for_visit": "Headache",
+      "insurance_payer": "UnitedHealthcare",
+      "insurance_id": "598775",
+      "referral": "None"
+    }
   },
   {
     "id": 10,
@@ -166,8 +175,12 @@
     "doctor": "Dr. Jones",
     "time": "2025-07-16 9:30 AM",
     "location": "San Francisco, CA",
-    "booked": false,
-    "patient_info": {}
+    "booked": true,
+    "patient_info": {
+      "name": "Lauren Baker",
+      "phone": "65089",
+      "reason": "43218"
+    }
   },
   {
     "id": 13,
@@ -190,8 +203,17 @@
     "doctor": "Dr. Lee",
     "time": "2025-07-17 9:00 AM",
     "location": "San Jose, CA",
-    "booked": false,
-    "patient_info": {}
+    "booked": true,
+    "patient_info": {
+      "name": "Lauren Baker",
+      "dob": "2000-12-07",
+      "email": null,
+      "address": "2275 Tioga Drive, Menlo Park, CA 94027, United States of America",
+      "reason_for_visit": "leg",
+      "insurance_payer": "UnitedHealthcare",
+      "insurance_id": "123589",
+      "referral": "none"
+    }
   },
   {
     "id": 16,
@@ -337,4 +359,4 @@
     "booked": false,
     "patient_info": {}
   }
-]  
+]

@@ -3,7 +3,7 @@ from fastapi.responses import JSONResponse
 from dotenv import load_dotenv
 import uvicorn
 from address_validator import validate_address
-from appointments_manager import get_available_slots, book_slot
+from appointments_manager import get_available_slots, book_slot, get_best_appointments
 from email_sender import send_confirmation_email
 import os
 import json
@@ -11,13 +11,6 @@ import json
 load_dotenv()
 
 app = FastAPI()
-
-"""@app.post("/webhook")
-async def handle_webhook(request: Request):
-    data = await request.json()
-    print("Webhook received data:", data)
-    return {"status": "received"}
-"""
 
 @app.post("/webhook")
 async def receive_intake(request: Request):
@@ -79,6 +72,26 @@ async def receive_intake(request: Request):
             status_code=500,
             content={"status": "error", "message": str(e)}
         )
+
+
+@app.post("/get_best_appointments")
+async def get_best_appointments(request: Request):
+    data = await request.json()
+    print("API received data:\n", json.dumps(data, indent=2))
+
+    requested_city = data.get("city", "").lower()
+    referral_doctor = data.get("referral", "").lower()
+
+    best_slots = get_best_appointments(requested_city, referral_doctor)
+
+    if not best_slots:
+        return JSONResponse(
+            status_code=404,
+            content={"status": "error", "message": "No suitable appointments found based on your preferences."}
+        )
+
+    return {"status": "success", "best_appointments": best_slots}
+
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=int(os.getenv("PORT", 8000)))
