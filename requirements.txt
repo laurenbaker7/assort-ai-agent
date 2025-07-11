@@ -1,6 +1,7 @@
-fastapi
 uvicorn
 twilio
 requests
 python-dotenv
 pydantic
+livekit-agents
+livekit-plugins
