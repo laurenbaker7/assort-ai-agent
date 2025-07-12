@@ -17,6 +17,7 @@ A simple AI voice agent that collects patient intake details over the phone, off
 
 - Python
 - Twilio (calls)
+- LiveKit Agent
 - TTS/STT (e.g., ElevenLabs, AssemblyAI, Deepgram)
 - JSON file for appointment tracking
 - SMTP or Mailgun/SendGrid for email
@@ -58,7 +59,7 @@ uvicorn agent:app --reload
 - **`agent.py`:**
     - Manages the step-by-step collection of:
         - Name, DOB, insurance, referral, complaint, address, contact
-    - Calls TTS/STT functions
+    - Uses LiveKit with TTS, LLM, and STT to complete the call
     - Calls `address_validator.py` when needed
     - Calls `appointments_manager.py` to offer/book slots
 - **`appointments_manager.py`:**
