@@ -187,8 +187,17 @@
     "doctor": "Dr. Smith",
     "time": "2025-07-16 11:00 AM",
     "location": "San Francisco, CA",
-    "booked": false,
-    "patient_info": {}
+    "booked": true,
+    "patient_info": {
+      "name": "Lauren Baker",
+      "dob": "2000-12-07",
+      "email": "laurenbaker@gmail.com",
+      "address": "1364 Jackson Street, San Francisco, CA 94109, United States of America",
+      "reason_for_visit": "Annual appointment",
+      "insurance_payer": "UnitedHealthcare",
+      "insurance_id": "12345",
+      "referral": "None"
+    }
   },
   {
     "id": 14,

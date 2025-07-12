@@ -1,21 +1,21 @@
-FROM python:3.9.6 AS builder
+FROM python:3.11-slim
 
-ENV PYTHONUNBUFFERED=1 \
-    PYTHONDONTWRITEBYTECODE=1
-WORKDIR /app
+ENV PYTHONUNBUFFERED=1
 
-RUN python -m venv .venv
-COPY requirements.txt ./
-RUN .venv/bin/pip install -r requirements.txt
+# Create non-root user
+ARG UID=10001
+RUN adduser --disabled-password --gecos "" --home "/home/appuser" --shell "/sbin/nologin" --uid "${UID}" appuser
 
-FROM python:3.9.6-slim
-WORKDIR /app
+WORKDIR /home/appuser
 
-COPY --from=builder /app/.venv .venv/
+COPY requirements.txt .
+RUN python -m pip install --no-cache-dir -r requirements.txt
+
 COPY . .
+RUN chown appuser:appuser /home/appuser/appointments.json
 
-# Ensure we use the venv for python execution
-ENV PATH="/app/.venv/bin:$PATH"
+USER appuser
 
-# Run your LiveKit agent
-CMD ["python", "agent.py"]
+RUN python agent.py download-files
+
+CMD ["python", "agent.py", "start"]

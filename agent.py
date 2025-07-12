@@ -9,17 +9,17 @@ from livekit.agents import JobContext, WorkerOptions, cli
 from livekit.agents.llm import function_tool
 from livekit.agents.voice import Agent, AgentSession, RunContext
 from livekit.agents.voice.room_io import RoomInputOptions
-from livekit.plugins import deepgram, openai, cartesia, silero, noise_cancellation
+from livekit.plugins import deepgram, openai, cartesia, silero
 from appointments_manager import book_slot
-from livekit.plugins.turn_detector.multilingual import MultilingualModel
 from helper_functions import get_ordinal
 from datetime import datetime
 from email_sender import send_confirmation_email
 from address_validator import validate_address
 from appointments_manager import get_best_appointments
+import time
 
 logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger("appointment-booking-agent")
+logger = logging.getLogger("appointment_booking_agent")
 
 load_dotenv()
 
@@ -162,26 +162,34 @@ class Assistant(Agent):
 
 
 async def entrypoint(ctx: JobContext):
-    session = AgentSession(
-        stt=deepgram.STT(model="nova-3", language="multi"),
-        llm=openai.LLM(model="gpt-4o-mini"),
-        tts=cartesia.TTS(model="sonic-2", voice="f786b574-daa5-4673-aa0c-cbe3e8534c02"),
-        vad=silero.VAD.load(),
-        turn_detection=MultilingualModel(),
-    )
+    while True:
+        try:
+            logger.info("Waiting for caller to join the room...")
 
-    session.userdata = UserData(ctx=ctx)
+            session = AgentSession(
+                stt=deepgram.STT(model="nova-3", language="multi"),
+                llm=openai.LLM(model="gpt-4o-mini"),
+                tts=cartesia.TTS(model="sonic-2", voice="f786b574-daa5-4673-aa0c-cbe3e8534c02"),
+                vad=silero.VAD.load(),
+            )
 
-    await session.start(
-        room=ctx.room,
-        agent=Assistant(),
-        room_input_options=RoomInputOptions(
-            noise_cancellation=noise_cancellation.BVC(), 
-        ),
-    )
+            session.userdata = UserData(ctx=ctx)
 
-    await ctx.connect()
+            await session.start(
+                room=ctx.room,
+                agent=Assistant(),
+                room_input_options=RoomInputOptions(),
+            )
+
+            # If the call ends, clean up and wait for next join
+            logger.info("Session ended, ready for next caller.")
+
+        except Exception as e:
+            logger.exception(f"Error in agent session: {e}")
+            await asyncio.sleep(2)  # brief pause before retry
+    #await ctx.connect()
 
 
 if __name__ == "__main__":
+    print("Agent started")
     cli.run_app(WorkerOptions(entrypoint_fnc=entrypoint))

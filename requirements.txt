@@ -3,5 +3,4 @@ twilio
 requests
 python-dotenv
 pydantic
-livekit-agents
-livekit-plugins
+livekit-agents[openai, deepgram, silero, cartesia, turn-detector]>=1.0
